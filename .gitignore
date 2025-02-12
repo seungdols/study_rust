@@ -1,0 +1,29 @@
+# Rust 빌드 디렉토리
+/target/
+
+# Rust 의존성 잠금 파일 (선택적)
+Cargo.lock
+
+# IDE 관련 파일들
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# 디버그 파일
+**/*.rs.bk
+
+# 바이너리 파일
+*.exe
+*.pdb
+*.dll
+*.so
+*.dylib
+
+# 환경 설정 파일
+.env
+.env.local
+
+# 운영체제 관련 파일
+.DS_Store
+Thumbs.db
