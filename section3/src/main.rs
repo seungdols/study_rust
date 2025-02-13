@@ -64,6 +64,45 @@ fn main() {
 
     let a = circle_area(2.0);
     println!("{a}");
+
+    let x = 4;
+
+    if x % 2 == 0 {
+        println!("x는 짝수 입니다.");
+    } else {
+        println!("x는 홀수 입니다.");
+    }
+
+    let condition = true;
+
+    let y = if condition {3} else {5};
+    println!("{y} 입니다.");
+
+    let mut counter = 0;
+    // loop {
+    //     println!("반복");
+    //     counter += 1;
+
+    //     if counter == 3 {
+    //         break;
+    //     }
+    // }
+
+    let xs = [1,2,3,4,5];
+    let mut idx = 0;
+    // while (idx < xs.len()) {
+    //     println!("xs[idx]= {}", xs[idx]);
+
+    //     idx += 1 ;
+    // }
+
+    for x in xs {
+        println!("xs[idx]= {}", xs[idx]);
+    }
+
+    for i in (0..5) {
+        println!("i = {i}");
+    }
 }
 
 fn a_function() {
