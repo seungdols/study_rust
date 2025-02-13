@@ -35,5 +35,22 @@ fn main() {
 
     let c = 'A';
     let z: char = '가';
+
+    // tuple
+    let t = (32, true, 1.41);
+    let (x,y,z) = t;
+    println!("{x},{y},{z} 입니다.");
+
+    // unit tuple = void type of other language
+    // ()
+
+    let x = [1,2,3,4,5];
+    x[0]; // 1
+    x[4]; // 5
+
+    let threes = [3; 100];
+    let last = threes[99];
+    println!("{last}");
+
 }
 
