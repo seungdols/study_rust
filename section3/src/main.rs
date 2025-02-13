@@ -1,6 +1,6 @@
 
 // 상수 - mut 붙일 수 없음.
-const PI: f32 = 3.141592;
+const PI: f64 = 3.141592;
 
 fn main() {
     // mut 을 붙이면, 가변 변수가 됨.
@@ -52,5 +52,33 @@ fn main() {
     let last = threes[99];
     println!("{last}");
 
+    a_function();
+    print_number(3);
+
+    add_numbers(2, 3);
+
+    let y = {
+        let x = 3;
+        x * 3
+    };
+
+    let a = circle_area(2.0);
+    println!("{a}");
 }
 
+fn a_function() {
+    println!("다른 함수 입니다.");
+}
+
+fn print_number(x: i32) {
+    println!("x = {x}");
+}
+
+fn add_numbers(a: i32, b: i32) {
+    let sum = a + b;
+    println!("a + b = {sum}");
+}
+
+fn circle_area(radius: f64) -> f64 {
+    PI * radius * radius
+}
