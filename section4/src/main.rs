@@ -38,9 +38,32 @@ fn main() {
     {
         let s = String::from("헬로");
 
-        let (s, len) = calc_length(s);
+        let len = calc_length(&s); // 소유권을 잠시 빌려줌
 
         println!("'{}'의 길이는 {}입니다.", s, len);
+    }
+
+    {
+        let s = String::from("Hello");
+
+        append_word(&mut s); // mutable reference를 만들면, 추가 참조를 만들 수 없다.
+
+        println!("s = {}", s);
+    }
+
+    {
+        let mut s = String::from("Hello");
+
+        let r1 = &s;
+        let r2 = &s;
+
+        println!("r1 = {}, r2 = {}", r1, r2);
+
+        let r3 = &mut s;
+        // println!("r1 = {}, r2 = {}, r3 = {}", r1, r2, r3); // Error
+
+        println!("r3 = {}",r3); // OK - 범위가 겹치지 않아 가능 (실제 r1, r2의 참조가 r3 사용시점에는 참조 범위가 1개여서 가능)
+        // println!("r1 = {}",r1); // Error
     }
 }
 
@@ -53,7 +76,11 @@ fn string_length2(s: String) -> String {
     s
 }
 
-fn calc_length(s: String) -> (String, usize) {
+fn calc_length(s: &String) -> (usize) {
     let length = s.len();
-    (s, length)
+    length
+}
+
+fn append_word(s: &mut String) {
+    s.push_str("World!");
 }
