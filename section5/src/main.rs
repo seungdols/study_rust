@@ -18,6 +18,19 @@ fn build_user(name: String, email: String) -> User {
 struct Color (i32, i32, i32);
 struct Point (i32, i32, i32);
 
+#[derive(Debug)]
+struct Rectangle {
+    width: u32,
+    height: u32,
+}
+
+fn area (width: u32, height: u32) -> u32 {
+    width * height
+}
+
+fn area2(rect: &Rectangle) -> u32 {
+    rect.width * rect.height
+}
 fn main() {
     {
         let mut user = User {
@@ -64,5 +77,23 @@ fn main() {
         let color = Color(1,2,3);
         let point = Point(1,2,3);
         color.0;
+    }
+
+    {
+        let width = 20;
+        let height = 30;
+
+        println!("Area: {}", area(width, height));
+    }
+
+    {
+        let rect = Rectangle {
+            width: 20,
+            height: 30
+        };
+
+        println!("Area: {}", area2(&rect));
+        println!("Rectangle: {:?}", rect);
+        dbg!(rect);
     }
 }
