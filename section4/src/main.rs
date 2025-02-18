@@ -34,6 +34,14 @@ fn main() {
         let r = string_length2(s2);
         println!("return: {}", r);
     }
+
+    {
+        let s = String::from("헬로");
+
+        let (s, len) = calc_length(s);
+
+        println!("'{}'의 길이는 {}입니다.", s, len);
+    }
 }
 
 fn string_length(s: String) {
@@ -43,4 +51,9 @@ fn string_length(s: String) {
 fn string_length2(s: String) -> String {
     println!("문자열의 길이는 {}", s.len());
     s
+}
+
+fn calc_length(s: String) -> (String, usize) {
+    let length = s.len();
+    (s, length)
 }
