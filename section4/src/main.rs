@@ -44,7 +44,7 @@ fn main() {
     }
 
     {
-        let s = String::from("Hello");
+        let mut s = String::from("Hello");
 
         append_word(&mut s); // mutable reference를 만들면, 추가 참조를 만들 수 없다.
 
@@ -65,6 +65,28 @@ fn main() {
         println!("r3 = {}",r3); // OK - 범위가 겹치지 않아 가능 (실제 r1, r2의 참조가 r3 사용시점에는 참조 범위가 1개여서 가능)
         // println!("r1 = {}",r1); // Error
     }
+
+    {
+        let s = String::from("Hello World!");
+
+        let word = &s[0..6];
+
+        println!("word = {}", word);
+
+        let word = first_word(&s);
+        println!("word = {}", word);
+
+        let str = "Hello";
+        let word = first_word(str);
+        println!("word = {}", word);
+    }
+
+    {
+        let a = [1,2,3,4,5];
+        let slice = &a[1..3];
+
+        println!("a = {:?} , slice={:?}", a , slice);
+    }
 }
 
 fn string_length(s: String) {
@@ -83,4 +105,17 @@ fn calc_length(s: &String) -> (usize) {
 
 fn append_word(s: &mut String) {
     s.push_str("World!");
+}
+
+// fn first_word(s: &String) -> &str {
+fn first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (i, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[0..i];
+        }
+    }
+
+    &s[..]
 }
