@@ -24,6 +24,14 @@ struct Rectangle {
     height: u32,
 }
 
+impl Rectangle {
+    // method 첫번째 파라미터는 self, &self, &mut self 모두 가능
+    fn area(&self) -> u32 {
+        &self.width * &self.height
+    }
+
+}
+
 fn area (width: u32, height: u32) -> u32 {
     width * height
 }
@@ -92,8 +100,22 @@ fn main() {
             height: 30
         };
 
-        println!("Area: {}", area2(&rect));
-        println!("Rectangle: {:?}", rect);
-        dbg!(rect);
+        // println!("Area: {}", area2(&rect));
+        // println!("Rectangle: {:?}", rect);
+        // dbg!(rect);
+
+
+        println!("Area: {}", rect.area());
+
+        println!("정사각형: {:?}", Rectangle::square(20));
+    }
+}
+
+impl Rectangle {
+    fn square(size: u32) -> Rectangle {
+        Rectangle {
+            width: size,
+            height: size
+        }
     }
 }
