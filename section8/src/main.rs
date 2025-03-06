@@ -106,6 +106,32 @@ impl Display for Person {
     }
 }
 
+fn longest<'a>(s1: &'a str, s2: &'a str) -> &'a str {
+    if s1.len() > s2.len() {
+        s1
+    } else {
+        s2
+    }
+}
+
+struct ImportantPart<'a> {
+    part: &'a str,
+}
+
+fn lifetime_in_struct() {
+    let sentence = String::from("안녕하세요. 러스트의 참조 수명에 대해 알아볼게요.");
+    let first_sentence = sentence.split('.')
+    .next()
+    .expect("마침표를 찾을 수 없어요!");
+
+    let i = ImportantPart { part: first_sentence };
+    println!("{}", i.part);
+}
+
+fn static_lifetime() {
+    let s: &'static str = "I have a static lifetime.";
+}
+
 fn main() {
     let numbers = vec![3,4,1,6,8,10];
     let result = smallest(&numbers);
@@ -128,4 +154,10 @@ fn main() {
         active: true,
     };
     meet(&cat, &gildong);
+
+    let s1 = String::from("가나다");
+    let s2 = "하나둘셋";
+
+    let res = longest(s1.as_str(), s2);
+    println!("가장 긴 문자열은 {}", res);
 }
